@@ -1,12 +1,37 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.stats as sp
+import scipy.io as sio
+import matplotlib.pyplot as plt
+
+import constants
 
 def mean_median_mode(values):
     return np.mean(values), np.median(values), sp.mode(values)
 
 def variance_stddev(values):
     return np.var(values), np.std(values)
+
+def demo_cities():
+    data = sio.loadmat(constants.DATASET_ROOT + 'cities.mat')
+    names = data['names']
+    crime = [city[3] for city in data['ratings']]
+
+    mean, median, mode = mean_median_mode(crime)
+    print("(arithmetic) mean:", mean)
+    print("median:", median)
+    print("mode:", mode.mode)
+    variance, stddev = variance_stddev(crime)
+    print("variance:", variance)
+    print("standard deviation:", stddev)
+
+    plt.title("Crime rate in US cities")
+    plt.xlabel("city")
+    plt.xticks(rotation=45)
+    plt.ylabel("crime rate")
+    plt.bar(names, crime, width=1.0, color='c')
+    plt.tight_layout()
+    plt.show()
 
 # demo
 def demo_generate_random_values():

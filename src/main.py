@@ -1,10 +1,15 @@
 import torch
+
 import perceptron
 import dataset
-import rng
-
+import stats
+import constants
 
 def main():
+    # stats.demo_generate_random_values()
+
+    stats.demo_cities()
+
     device = (
         "cuda"
         if torch.cuda.is_available()
@@ -13,8 +18,6 @@ def main():
         else "cpu"
     )
     print(f"Using {device} device")
-
-    rng.generate_random_values()
 
 if __name__ == "__main__":
     main()
