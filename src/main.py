@@ -8,7 +8,9 @@ import constants
 def main():
     # stats.demo_generate_random_values()
 
-    stats.demo_cities()
+    # stats.demo_cities()
+
+    stats.demo_hospital()
 
     device = (
         "cuda"
