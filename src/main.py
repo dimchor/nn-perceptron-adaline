@@ -1,7 +1,9 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 from perceptron import Perceptron
+from adaline import Adaline
 import stats
 import constants
 
@@ -29,15 +31,26 @@ def part_b():
 
     p = Perceptron(4, 1, constants.EPOCHS)
 
-    print(p.train(train_x, train_d))
+    err = p.train(train_x, train_d)
+
+    plt.xlabel('epochs')
+    plt.ylabel('errors')
+    plt.plot(range(constants.EPOCHS), err)
+    plt.show()
 
     print(p.test(test_x, test_d))
 
+    # a = Adaline(4, 1, constants.EPOCHS, 100)
+    # print(a.train(train_x, train_d))
+    # print(a.test(test_x, test_d))
+
+
 def main():
+    pass
 
     # part_a()
 
-    part_b()
+    # part_b()
 
 
 if __name__ == "__main__":
