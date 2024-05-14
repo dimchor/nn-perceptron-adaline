@@ -18,9 +18,8 @@ class Perceptron:
         return np.array([1 if item >=0 else 0 for item in x])
 
     def train(self, x: np.array, d: np.array):
-        err = []
+        err = np.zeros(self.__epochs, dtype=int)
         for i in range(self.__epochs):
-            err.append(0)
             for j in range(len(x)):
                 y = self.__step(np.dot(x[j], self.__weights))
                 if y[0] != d[j][0]:
