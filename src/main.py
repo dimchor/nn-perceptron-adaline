@@ -40,9 +40,16 @@ def part_b():
 
     print(p.test(test_x, test_d))
 
-    # a = Adaline(4, 1, constants.EPOCHS, 100)
-    # print(a.train(train_x, train_d))
-    # print(a.test(test_x, test_d))
+    a = Adaline(4, .001, constants.EPOCHS, 1)
+
+    err = a.train(train_x, train_d)
+
+    plt.xlabel('epochs')
+    plt.ylabel('errors')
+    plt.plot(range(constants.EPOCHS), err)
+    plt.show()
+    
+    print(a.test(test_x, test_d))
 
 
 def main():

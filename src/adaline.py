@@ -23,7 +23,6 @@ class Adaline:
     def train(self, x: np.array, d: np.array):
         mse = np.zeros(self.__epochs, dtype=float)
         for i in range(self.__epochs):
-            print(i)
             err = 0.
             for j in range(len(x)):
                 y = self.__linear(np.dot(x[j], self.__weights))
@@ -32,8 +31,6 @@ class Adaline:
                 delta = d[j][0] - y[0]
 
                 err += delta ** 2
-
-                print(err)
 
                 self.__weights += self.__beta * delta * x[j].reshape(-1, 1)
 
@@ -51,6 +48,6 @@ class Adaline:
     def test(self, x: np.array, d: np.array):
         err = 0
         for i in range(len(x)):
-            if d[i][0] != self.__linear(np.dot(x[i], self.__weights)):
+            if abs(d[i][0] - self.__linear(np.dot(x[i], self.__weights))) > self.__mmse:
                 err += 1
         return err
