@@ -16,12 +16,12 @@ def part_a():
 
 def part_b():
     SETOSA = 0
-    VIRGINICA = 1
-    TRAINSET_SIZE = 100
+    VERSICOLOR = 1
+    TRAINSET_SIZE = 50
 
     data = pd.read_csv(constants.DATASET_ROOT + 'iris.csv', sep=',', header=0).sample(frac=1)
     
-    transform = np.vectorize(lambda s: SETOSA if s == 'Iris-setosa' else VIRGINICA)
+    transform = np.vectorize(lambda s: SETOSA if s == 'Iris-setosa' else VERSICOLOR)
 
     train_d = transform(data[:TRAINSET_SIZE][['Species']].to_numpy())
     train_x = data[:TRAINSET_SIZE][['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']].to_numpy()
@@ -50,7 +50,7 @@ def main():
 
     # part_a()
 
-    # part_b()
+    part_b()
 
 
 if __name__ == "__main__":
